@@ -6,6 +6,16 @@
 # Terminal. It will tell us that a service is listening on port 8000 but
 # it is not exposed. So, we will expose that and then click on open browser.
 
+# Migrations are Django's way of converting Python code into database
+# operations. In other words, when we need to make changes to a database
+# connected to a Django project, instead of running raw SQL commands or
+# using some other database language, Django will do everything for us
+# and all we need to do is write Python code. The reason that we keep
+# getting that warning when we run our project is because Django recognizes
+# that, even though we have created a new project and started an app, we
+# have not actually done anything to set up the SQLite database that it
+# created for us: it is telling us that we need to run all the initial
+# built-in database operations in order for our database to work properly.
 
 # !/usr/bin/env python
 """Django's command-line utility for administrative tasks."""
