@@ -6,6 +6,7 @@
 -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,7 +18,33 @@
     <link rel="icon" type="image/x-icon" href="assets/images/html5.webp">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
+
 <body>
+
     <h1>Things I need to do:</h1>
+    <!--
+        We can render our items key from the context dictionary just created into 'views.py' by using the following double curly bracket syntax:
+        {{ items }}
+        This is a template variable and anything that you return to the template from that dictionary can be rendered in the same way a Django query set.
+    -->
+    <table>
+        {% for item in items %}
+            <tr>
+                {% if item.done %}
+                    <td><strike>{{ item.name }}</strike></td>
+                {% else %}
+                    <td>{{ item.name }}</td>
+                {% endif %}
+            </tr>
+        {% empty %}
+            <tr>
+                <td>You have nothing to do!</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <a href = "/add">Add an Item</a>
+
 </body>
+
 </html>

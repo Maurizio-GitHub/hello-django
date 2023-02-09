@@ -20,12 +20,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from todo.views import get_todo_list
+from todo.views import get_todo_list, add_item
 
 # Once imported what we need, all that is left to do is define the url
 # actually going to trigger our custom code and return the http response
 # to the browser. To do that, we use the built-in path function,
 # which typically takes three arguments:
+
 # - the url that the user is going to type in (an empty string means that
 #      we do not need to specify any particular URL in order to hit our Python
 #      function, hence, this is going to act as our home page);
@@ -35,5 +36,6 @@ from todo.views import get_todo_list
 #      in this context):
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', get_todo_list, name='get_todo_list')
+    path('', get_todo_list, name='get_todo_list'),
+    path('add', add_item, name='add')
 ]

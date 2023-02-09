@@ -1,0 +1,62 @@
+<!--
+    File created along with its ascendant: 'templates' and 'todo' folders within the 'todo' main folder.
+    The reason for creating this secondary 'todo' folder inside the templates directory is simple: when Django looks for templates inside of these apps,
+    it always returns the first one that it finds. So, by separating it into a folder that matches its app name, we ensure that we are getting the right
+    template even if there is another template of the same name in a different app.
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Maurizio Loffredo">
+    <meta name="description" content="Django 'ToDo Walkthrough Project'.">
+    <meta name="keywords" content="Django, Walkthrough">
+    <title>Django</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/html5.webp">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <h1>Add a To-Do Item:</h1>
+    <!--
+        The add-action is going to be our add-URL that we submit the form to.
+        CSRF, or cross-site request forgery token, is a randomly generated unique value, which will be added to the form as a hidden input field
+        when the form is submitted. It works to guarantee that the data we are posting is actually coming from our app and not from another website
+    -->
+    <form method="POST" action="add">
+
+        {% csrf_token %}
+
+        <div>
+            <p>
+                <label for = "id_name">Name:</label>
+                <input type="text" id="id_name" name="item_name">
+                <!--
+                    The name attribute of this input is the name we use to access the input's value in our view function.
+                    The id attribute is the way that we can identify it on the page to apply its label CSS and so on.
+                -->
+            </p>
+        </div>
+
+        <div>
+            <p>
+                <label for = "id_done">Done:</label>
+                <input type="checkbox" id="id_done" name="done">
+            </p>
+        </div>
+
+        <div>
+            <p>
+                <button type="submit">Add Item</button>
+            </p>
+        </div>
+
+    </form>
+
+</body>
+
+</html>
