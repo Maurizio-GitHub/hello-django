@@ -25,20 +25,18 @@
     <!--
         The add-action is going to be our add-URL that we submit the form to.
         CSRF, or cross-site request forgery token, is a randomly generated unique value, which will be added to the form as a hidden input field
-        when the form is submitted. It works to guarantee that the data we are posting is actually coming from our app and not from another website
-    -->
-    <form method="POST" action="add">
+        when the form is submitted. It works to guarantee that the data we are posting is actually coming from our app and not from another website.
 
-        {% csrf_token %}
+        OLD WAY, leveraging HTML writing:
 
         <div>
             <p>
                 <label for = "id_name">Name:</label>
                 <input type="text" id="id_name" name="item_name">
-                <!--
+
                     The name attribute of this input is the name we use to access the input's value in our view function.
                     The id attribute is the way that we can identify it on the page to apply its label CSS and so on.
-                -->
+
             </p>
         </div>
 
@@ -48,6 +46,14 @@
                 <input type="checkbox" id="id_done" name="done">
             </p>
         </div>
+
+        NEW WAY, in the following, leveraging Django's {{ form }}.
+        {{ form.as_p }} has been used to keep the vertical styling:
+    -->
+    <form method="POST" action="add">
+
+        {% csrf_token %}
+        {{ form.as_p }}
 
         <div>
             <p>
