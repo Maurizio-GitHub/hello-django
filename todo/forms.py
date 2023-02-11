@@ -17,5 +17,8 @@ class ItemForm(forms.ModelForm):
     # form which model it is going to be associated with (the fields: 'name'
     # and 'done' have already been defined in models.py):
     class Meta:
+        # These are the fields to explicitly display in the inner Meta-class.
+        # The reason for that is, otherwise, the form will display all fields
+        # on the model, including those we might not want the user to see:
         model = Item
         fields = ['name', 'done']
