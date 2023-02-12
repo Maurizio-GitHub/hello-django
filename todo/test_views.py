@@ -69,3 +69,16 @@ class TestViews(TestCase):
         self.assertRedirects(response, '/')
         updated_item = Item.objects.get(id=item.id)
         self.assertFalse(updated_item.done)
+
+    # Missing test caught up upon coverage check:
+    def test_can_edit_item(self):
+        # It creates an item instance;
+        # edits the item using POST to 'Updated Name'
+        # checks it redirects to home;
+        # saves the edited item as updated_item;
+        # check this edited item equals 'Updated Name':
+        item = Item.objects.create(name='Test Todo Item')
+        response = self.client.post(f'/edit/{item.id}', {'name': 'Updated Name'})
+        self.assertRedirects(response, '/')
+        updated_item = Item.objects.get(id=item.id)
+        self.assertEqual(updated_item.name, 'Updated Name')
