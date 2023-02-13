@@ -39,3 +39,80 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+# To install Heroku CLI in Gitpod:
+# - curl https://cli-assets.heroku.com/install.sh | sh
+
+# - use the login command: heroku login -i
+# - enter your Heroku email
+# - enter your Heroku API as password
+
+# To view any other commands, just type: heroku
+
+# If you need to know how any of these other commands work, just type:
+# 'heroku' followed by the command and then the 'help' command. Example:
+# heroku apps help
+
+# DATABASE:
+# db.sqlite3 has been acting as our database throughout this walk-through.
+# This is fine for local development, but it will not work in production,
+# because Heroku uses an ephemeral file system that it is wiped clean every
+# time Heroku runs updates or we redeploy our app. Since db.sqlite3 is a
+# file-based database, we will lose our entire database every time this
+# happens because, when the file system is wiped, the file will be deleted.
+# Therefore, we will use an add-on for Heroku, which will allow us to use a
+# server-based database called Postgres that will be separated from our
+# application, so it will survive even if the application server is destroyed.
+
+# To use Postgres in our app, we need to install a package called psycopg2:
+# pip3 install psycopg2-binary
+
+# We also need a tool that replaces the development server once the app is
+# deployed to Heroku. Gunicorn will act as our web server:
+# pip3 install gunicorn
+
+# Finally, we need a file to let Heroku know which packages to install:
+# pip3 freeze --local > requirements.txt
+
+# To create a new app on Heroku:
+# heroku apps:create APPNAME --region eu
+
+# To view all your apps:
+# heroku apps
+
+# To shows you the key remote urls:
+# git remote -v
+
+# There are two key remote urls here:
+# one for pushing code to Heroku; one for fetching code from Heroku.
+
+# This tells us that when we use the command 'git push heroku master',
+# it will be pushed to the master branch at the relevant url.
+# If we use the command 'git push origin master',
+# it would go to the other remote url.
+
+# To connect our database to our workspace, add this to env.py:
+# import os
+# os.environ.setdefault("DATABASE_URL", "my_copied_database_url")
+
+# FOLLOWING STEPS
+
+# Install the dj-database-url package for Django to parse the URL got above:
+# pip3 install dj_database_url
+
+# Add it to our requirements.txt:
+# pip3 freeze --local > requirements.txt
+
+# Import the package and the env.py file at the top of 'settings.py':
+# from pathlib import Path
+# import os
+# import dj_database_url
+# import env
+
+# Comment out the default database setting and replace it to use the
+# DATABASE_URL environment variable in 'settings.py'; in this case:
+# DATABASES =
+# {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
+
+# Run the migrate command to build the database according to the model created:
+# python3 manage.py migrate

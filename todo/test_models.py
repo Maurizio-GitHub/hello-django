@@ -24,16 +24,3 @@ class TestModels(TestCase):
 # - coverage report (to check report results);
 # - coverage html (to create a folder containing interactive HTML report);
 # - python3 -m http.server (to view the index.html file produced).
-
-# To install Heroku CLI in Gitpod:
-# - curl https://cli-assets.heroku.com/install.sh | sh
-
-# - use the login command: heroku login -i
-# - enter your Heroku email
-# - enter your Heroku API as password
-
-# To view any other commands, just type: heroku
-
-# If you need to know how any of these other commands work, just type:
-# 'heroku' followed by the command and then the 'help' command. Example:
-# heroku apps help
