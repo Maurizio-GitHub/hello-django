@@ -121,7 +121,7 @@ if __name__ == '__main__':
 # heroku config:set DISABLE_COLLECTSTATIC=1
 
 # After that, we can push to Heroku:
-# git push heroku main
+# 'git push heroku main'
 
 # In case of issues, we use this command to check the deployment logs:
 # heroku logs --tail
@@ -139,6 +139,6 @@ if __name__ == '__main__':
 # We also need to to add the host name of our Heroku app to the allowed host
 # list in 'settings.py'. This list allows Django to ensure that HTTP requests
 # are coming from domain names it trusts:
-# 'django-to-do-walk-through.herokuapp.com'
+# ALLOWED_HOSTS = ['APP_NAME.herokuapp.com']
 
 # After that, we need to commit once again!
