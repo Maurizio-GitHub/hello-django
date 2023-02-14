@@ -116,3 +116,22 @@ if __name__ == '__main__':
 
 # Run the migrate command to build the database according to the model created:
 # python3 manage.py migrate
+
+# In case we do not have static files for Heroku to collect:
+# heroku config:set DISABLE_COLLECTSTATIC=1
+
+# After that, we can push to Heroku:
+# git push heroku main
+
+# In case of issues, we use this command to check the deployment logs:
+# heroku logs --tail
+
+# In case the issue is that we have not told Heroku that we want this to be a
+# web-app with a web server, just remember that we installed 'gunicorn' to act
+# as our web server. However, we have not told 'gunicorn' to start yet.
+# To do that, we can create a special file called a 'Procfile'.
+
+# Into Procfile, we write the following code to tell 'gunicorn' to run,
+# using our project's wsgi module, which allows it to handle HTTP requests
+# like run-server does in our local development environment:
+# web: gunicorn django_todo.wsgi:application
