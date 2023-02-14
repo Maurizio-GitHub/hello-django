@@ -142,3 +142,9 @@ if __name__ == '__main__':
 # ALLOWED_HOSTS = ['APP_NAME.herokuapp.com']
 
 # After that, we need to commit once again!
+
+# NOTES:
+# Environment variables should be set up and added to Heroku as well.
+# In order to run a local-host version of the app via GitPod, we also need to
+# change 'settings.py' with a series of conditioanl statements (see them there)
+# and add the DEVELOPMENT variable ( = True) to GitPod.
