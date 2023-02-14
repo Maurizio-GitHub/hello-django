@@ -135,3 +135,10 @@ if __name__ == '__main__':
 # using our project's wsgi module, which allows it to handle HTTP requests
 # like run-server does in our local development environment:
 # web: gunicorn django_todo.wsgi:application
+
+# We also need to to add the host name of our Heroku app to the allowed host
+# list in 'settings.py'. This list allows Django to ensure that HTTP requests
+# are coming from domain names it trusts:
+# 'django-to-do-walk-through.herokuapp.com'
+
+# After that, we need to commit once again!
